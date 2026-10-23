@@ -1,5 +1,5 @@
-# **$A^2\text{QUANT}$: Asymmetric and Adaptive Quantization for Efficient Infrared Small Target Detection**
-This is the official repository of the paper **$A^2\text{QUANT}$: Asymmetric and Adaptive Quantization for Efficient Infrared Small Target Detection**.
+# **$A^2\text{QUANT}$: Asymmetric and Adaptive Quantization for Efficient Infrared Small-Target Detection**
+This is the official repository of the paper **$A^2\text{QUANT}$: Asymmetric and Adaptive Quantization for Efficient Infrared Small-Target Detection**.
 
 ## Code Structure
 
@@ -91,22 +91,37 @@ Therefore, for models with the same topology, reducing weight or activation bit 
 
 Since this project simulates quantization using floating-point tensors, we additionally report a theoretical linearly scaled FLOPs proxy:
 
-\[
+```math
 \mathrm{FLOPs}_{\mathrm{proxy}}(\mathrm{G})
 =
-C_{\mathrm{conv}}\frac{\bar b_A}{32}
+C_{\mathrm{conv}} \frac{\bar{b}_A}{32}
 +
 C_{\mathrm{BN}}
 +
-C_{\mathrm{pool}},
-\]
+C_{\mathrm{pool}}
+```
 
 where:
 
-- \(C_{\mathrm{conv}}\) denotes the convolutional computation cost,
-- \(C_{\mathrm{BN}}\) denotes the BatchNorm computation cost,
-- \(C_{\mathrm{pool}}\) denotes the pooling computation cost,
-- \(\bar b_A\) is the unweighted mean of the discrete activation bit widths used by all activation quantizer modules during the forward pass at the current epoch,
-- \(\mathrm{G}\) denotes \(10^9\).
+- $C_{\mathrm{conv}}$ denotes the convolutional computation cost;
+- $C_{\mathrm{BN}}$ denotes the BatchNorm computation cost;
+- $C_{\mathrm{pool}}$ denotes the pooling computation cost;
+- $\bar b_A$ is the unweighted mean of the discrete activation bit widths used by all activation quantizer modules during the forward pass at the current epoch;
+- $\mathrm{G}$ denotes $10^9$.
 
 This proxy is intended to approximately reflect the theoretical computational benefit introduced by activation bit-width reduction.
+
+## Citation
+
+If you find this work useful in your research, please consider citing our paper:
+
+```bibtex
+@article{zhang2026a2quant,
+  title   = {$A^2$Quant: Asymmetric and Adaptive Quantization for Efficient Infrared Small-Target Detection},
+  author  = {Mingjin Zhang and Fengqin Lu and Jie Guo and Fei Gao and Yunsong Li},
+  journal = {IEEE Transactions on Geoscience and Remote Sensing},
+  volume  = {64},
+  year    = {2026},
+  doi     = {10.1109/TGRS.2026.3713019}
+}
+```
